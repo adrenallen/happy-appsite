@@ -1,0 +1,16 @@
+<div class='container'>
+  <mat-expansion-panel #reportExpansionPanel>
+    <mat-expansion-panel-header>
+      {{activeReport || "Select a report"}}
+    </mat-expansion-panel-header>
+    <mat-action-list>
+        <button *ngFor="let reportOption of reportList" mat-list-item routerLink="./{{reportOption.path}}"
+          routerLinkActive="active" (click)="reportExpansionPanel.close(); setReportName(reportOption.data.title)">{{reportOption.data.title}}</button>
+    </mat-action-list>
+  </mat-expansion-panel>
+  <div class='helper-button' *ngIf="this.activeReport.length > 0">
+    <button mat-button (click)="getReportHelp()">Need clarification?</button>
+  </div>
+  <br>
+  <router-outlet></router-outlet>
+</div>

@@ -1,0 +1,78 @@
+<div class='mat-typography'>
+    <div class='new-factor-container'>
+        <button mat-raised-button color="primary" (click)="addNewFactor()">New Factor</button>
+    </div>
+    <div class='factors-container'>
+        <mat-list class='existing-factors'>
+            <mat-list-item *ngFor="let factor of factors | factorArchived:false:factorsUpdated" [class.active-row]="clickedFactor == factor.id"
+                (click)="toggleActiveFactor(factor.id)">
+                <span class='factor-row-label-span'>
+                    <label class='factor-row-label' [innerHTML]="factor.factor"></label>
+                    <span class='expand-arrow'>
+                        <button mat-button>
+                            <mat-icon svgIcon="left_arrow_icon"></mat-icon>Edit
+                        </button>
+                    </span>
+                </span>
+                <span class='factor-row-buttons' [@toggleRowButtons]="clickedFactor == factor.id ? 'show' : 'hide'">
+                    <button mat-raised-button (click)="editFactorAspects(factor, $event)">
+                        <mat-icon svgIcon="factor_aspect_icon"></mat-icon>
+                    </button>
+                    <button mat-raised-button (click)="editFactor(factor, $event)">
+                        <mat-icon svgIcon="edit"></mat-icon>
+                    </button>
+                    <button mat-raised-button color="accent" (click)="setFactorArchive(factor, true, $event)">
+                        <mat-icon svgIcon="archive_icon"></mat-icon>
+                    </button>
+                </span>
+                <span class='factor-row-buttons desktop-buttons'>
+                    <button mat-raised-button (click)="editFactorAspects(factor, $event)">
+                        <mat-icon svgIcon="factor_aspect_icon"></mat-icon>
+                    </button>
+                    <button mat-raised-button (click)="editFactor(factor, $event)">
+                        <mat-icon svgIcon="edit"></mat-icon>
+                    </button>
+                    <button mat-raised-button color="accent" (click)="setFactorArchive(factor, true, $event)">
+                        <mat-icon svgIcon="archive_icon"></mat-icon>
+                    </button>
+                </span>
+            </mat-list-item>
+            <mat-divider *ngIf="(factors | factorArchived:true:factorsUpdated).length > 0"></mat-divider>
+            <h3 mat-subheader *ngIf="(factors | factorArchived:true:factorsUpdated).length > 0">Archived</h3>
+            <mat-list-item *ngFor="let factor of factors | factorArchived:true:factorsUpdated" [class.active-row]="clickedFactor == factor.id"
+                (click)="clickedFactor = factor.id;">
+                <span class='factor-row-label-span'>
+                    <label class='factor-row-label' [innerHTML]="factor.factor"></label>
+                    <span class='expand-arrow'>
+                        <button mat-button>
+                            <mat-icon svgIcon="left_arrow_icon"></mat-icon>Edit
+                        </button>
+                    </span>
+                </span>
+                <span class='factor-row-buttons' [@toggleRowButtons]="clickedFactor == factor.id ? 'show' : 'hide'">
+                    <button mat-raised-button (click)="editFactorAspects(factor, $event)">
+                        <mat-icon svgIcon="factor_aspect_icon"></mat-icon>
+                    </button>
+                    <button mat-raised-button (click)="editFactor(factor, $event)">
+                        <mat-icon svgIcon="edit"></mat-icon>
+                    </button>
+                    <button mat-raised-button color="primary" (click)="setFactorArchive(factor, false, $event)">
+                        <mat-icon svgIcon="unarchive_icon"></mat-icon>
+                    </button>
+                </span>
+                <span class='factor-row-buttons desktop-buttons'>
+                    <button mat-raised-button (click)="editFactorAspects(factor, $event)">
+                        <mat-icon svgIcon="factor_aspect_icon"></mat-icon>
+                    </button>
+                    <button mat-raised-button (click)="editFactor(factor, $event)">
+                        <mat-icon svgIcon="edit"></mat-icon>
+                    </button>
+                    <button mat-raised-button color="primary" (click)="setFactorArchive(factor, false, $event)">
+                        <mat-icon svgIcon="unarchive_icon"></mat-icon>
+                    </button>
+                </span>
+            </mat-list-item>
+        </mat-list>
+    </div>
+
+</div>

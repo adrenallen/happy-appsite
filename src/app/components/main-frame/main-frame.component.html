@@ -1,0 +1,71 @@
+<mat-sidenav-container fullscreen class='mat-typography'>
+  <mat-sidenav class='side-nav-drawer' #sideNavDrawer>
+    <img src="assets/hapr_primary.png" class='side-nav-logo'/>
+    <hpy-nav-menu (onNavigate)="sideNavDrawer.close()"></hpy-nav-menu>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary" class='header-nav'>
+      <span class='header-nav-actions float-left hide-on-mobile'>
+        <button mat-button (click)="sideNavDrawer.toggle()"
+          angulartics2On="click" 
+          angularticsAction="LandscapeNavigationOpen" 
+          angularticsLabel="navigation">
+          <mat-icon svgIcon="hamburger_menu_icon"></mat-icon>
+        </button>
+        <button mat-button style="visibility:hidden">
+          <mat-icon svgIcon="message_icon" ></mat-icon>
+        </button>
+        <button mat-stroked-button (click)="promptForFeedback()">Feedback</button>
+      </span>
+      <span class="show-on-mobile" style="visibility:hidden;">
+        <button mat-button routerLink="/main/dashboard" routerLinkActive #rla="routerLinkActive"
+          [disabled]="rla.isActive">
+          <mat-icon svgIcon="dashboard_icon"></mat-icon>
+        </button>
+      </span>
+      <span class='header-nav-middle-fill mat-typography'>
+        <h1>{{frameTitle}}</h1>
+      </span>
+      <span class="show-on-mobile" style="visibility:hidden;">
+          <button mat-button>
+            <mat-icon svgIcon="dashboard_icon"></mat-icon>
+          </button>
+        </span>
+      <span class='header-nav-actions float-right hide-on-mobile'>
+        <button [routerLink]="['./rate']" mat-stroked-button [disabled]="hideAddRatingButton"
+        
+          angulartics2On="click" 
+          angularticsAction="AddRatingNavigate" 
+          angularticsLabel="new-rating">New Rating</button>
+      </span>
+    </mat-toolbar>
+    <div class='main-frame-content'>
+      <router-outlet></router-outlet>
+    </div>
+    <div class='main-frame-bottom-buttons'>
+      <div class='left-col'>
+        <button mat-mini-fab color="primary" (click)="promptForFeedback()">
+          <mat-icon svgIcon="message_icon" ></mat-icon>
+        </button>
+      </div>
+      <div class='center-col'>
+        <button mat-fab color="primary"
+          [routerLink]="['./rate']" 
+          [disabled]="hideAddRatingButton"
+          angulartics2On="click" 
+          angularticsAction="AddRatingNavigate" 
+          angularticsLabel="new-rating">
+          <mat-icon svgIcon="add_icon"></mat-icon>
+        </button>
+      </div>
+      <div class='right-col'>
+        <button mat-mini-fab color="primary" (click)="openBottomNavSheet()"
+          angulartics2On="click" 
+          angularticsAction="PortraitNavigationOpen" 
+          angularticsLabel="navigation">
+          <mat-icon svgIcon="more_icon"></mat-icon>
+        </button>
+      </div>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

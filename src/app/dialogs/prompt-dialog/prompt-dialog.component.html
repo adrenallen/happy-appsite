@@ -1,0 +1,11 @@
+<h4 mat-dialog-title>
+  <span>
+    <mat-icon svgIcon="info_icon"></mat-icon>
+  </span>
+  <br>{{title}}</h4>
+<div mat-dialog-content>
+  <span>{{message}}</span>
+</div>
+<div mat-dialog-actions >
+  <button mat-raised-button *ngFor="let buttonData of buttonOptions" [color]="buttonData.color" (click)="selectButton(buttonData)">{{buttonData.label}}</button>
+</div>

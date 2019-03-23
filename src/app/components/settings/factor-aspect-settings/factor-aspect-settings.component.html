@@ -1,0 +1,70 @@
+<div *ngIf="!isLoaded">
+  <mat-spinner></mat-spinner>
+</div>
+<div *ngIf="isLoaded" class='mat-typography'>
+  <div class='new-factor-container'>
+      <button mat-raised-button color="primary" (click)="addNewFactorAspect()">New Factor Aspect</button>
+  </div>
+  <div class='factors-container'>
+      <mat-list class='existing-factors'>
+          <mat-list-item *ngFor="let factorAspect of factorAspects | factorAspectArchived:false:factorAspectsUpdated" [class.active-row]="clickedFactorAspect == factorAspect.id"
+              (click)="toggleActiveFactorAspect(factorAspect.id)">
+              <span class='factor-row-label-span'>
+                  <label class='factor-row-label' [innerHTML]="factorAspect.factorAspect"></label>
+                  <span class='expand-arrow'>
+                      <button mat-button>
+                          <mat-icon svgIcon="left_arrow_icon"></mat-icon>Edit
+                      </button>
+                  </span>
+              </span>
+              <span class='factor-row-buttons' [@toggleRowButtons]="clickedFactorAspect == factorAspect.id ? 'show' : 'hide'">
+                  <button mat-raised-button (click)="editFactorAspect(factorAspect, $event)">
+                      <mat-icon svgIcon="edit"></mat-icon>
+                  </button>
+                  <button mat-raised-button color="accent" (click)="setFactorAspectArchive(factorAspect, true, $event)">
+                      <mat-icon svgIcon="archive_icon"></mat-icon>
+                  </button>
+              </span>
+              <span class='factor-row-buttons desktop-buttons'>
+                  <button mat-raised-button (click)="editFactorAspect(factorAspect, $event)">
+                      <mat-icon svgIcon="edit"></mat-icon>
+                  </button>
+                  <button mat-raised-button color="accent" (click)="setFactorAspectArchive(factorAspect, true, $event)">
+                      <mat-icon svgIcon="archive_icon"></mat-icon>
+                  </button>
+              </span>
+          </mat-list-item>
+          <mat-divider *ngIf="(factorAspects | factorAspectArchived:true:factorAspectsUpdated).length > 0"></mat-divider>
+          <h3 mat-subheader *ngIf="(factorAspects | factorAspectArchived:true:factorAspectsUpdated).length > 0">Archived</h3>
+          <mat-list-item *ngFor="let factorAspect of factorAspects | factorAspectArchived:true:factorAspectsUpdated" [class.active-row]="clickedFactorAspect == factorAspect.id"
+              (click)="clickedFactorAspect = factorAspect.id;">
+              <span class='factor-row-label-span'>
+                  <label class='factor-row-label' [innerHTML]="factorAspect.factorAspect"></label>
+                  <span class='expand-arrow'>
+                      <button mat-button>
+                          <mat-icon svgIcon="left_arrow_icon"></mat-icon>Edit
+                      </button>
+                  </span>
+              </span>
+              <span class='factor-row-buttons' [@toggleRowButtons]="clickedFactorAspect == factorAspect.id ? 'show' : 'hide'">
+                  <button mat-raised-button (click)="editFactorAspect(factorAspect, $event)">
+                      <mat-icon svgIcon="edit"></mat-icon>
+                  </button>
+                  <button mat-raised-button color="primary" (click)="setFactorAspectArchive(factorAspect, false, $event)">
+                      <mat-icon svgIcon="unarchive_icon"></mat-icon>
+                  </button>
+              </span>
+              <span class='factor-row-buttons desktop-buttons'>
+                  <button mat-raised-button (click)="editFactorAspect(factorAspect, $event)">
+                      <mat-icon svgIcon="edit"></mat-icon>
+                  </button>
+                  <button mat-raised-button color="primary" (click)="setFactorAspectArchive(factorAspect, false, $event)">
+                      <mat-icon svgIcon="unarchive_icon"></mat-icon>
+                  </button>
+              </span>
+          </mat-list-item>
+      </mat-list>
+  </div>
+
+</div>
+

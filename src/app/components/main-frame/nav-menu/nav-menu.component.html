@@ -1,0 +1,8 @@
+<div class='mat-typography'>
+  <mat-nav-list>
+    <a mat-list-item routerLink="/main/dashboard" (click)="navigateEvent()" routerLinkActive="active"><mat-icon svgIcon="dashboard_icon"></mat-icon>Dashboard</a>
+    <a mat-list-item routerLink='/main/reports' (click)="navigateEvent()" routerLinkActive="active"><mat-icon svgIcon="reports_icon"></mat-icon>Reports</a>
+    <a mat-list-item routerLink='/main/settings' (click)="navigateEvent()" routerLinkActive="active"><mat-icon svgIcon="settings_icon"></mat-icon>Settings</a>
+    <a mat-list-item (click)="logout()"><mat-icon svgIcon="logout_icon"></mat-icon>Logout</a>
+  </mat-nav-list>
+</div>

@@ -1,0 +1,39 @@
+<mat-card class='center-everything'>
+  <mat-card-title>
+    <span>How are you feeling?</span>
+    <div class='date-picker-container'>
+        <span></span>
+        <span class='date-picker-span mat-typography'>
+          <hpy-date-time-picker *ngIf="!disableRatingDate" [(dateValue)]="rating.createdDatetime"></hpy-date-time-picker>
+          <span class='mat-subheading-1' *ngIf="disableRatingDate">{{rating.createdDatetime | date:'short'}}</span>
+        </span>
+        <span></span>
+    </div>
+    
+  </mat-card-title>
+  <mat-card-content>
+    <mat-slider 
+      #ratingSlider
+      thumbLabel
+      tickInterval="1"
+      min="1"
+      max="5"
+      [(ngModel)]="ratingValue"
+      (change)="updateRatingDescription(ratingSlider.value)"></mat-slider>
+    <div>
+      <mat-icon *ngIf="ratingValue == 1" svgIcon="rating_face_1"></mat-icon>
+      <mat-icon *ngIf="ratingValue == 2" svgIcon="rating_face_2"></mat-icon>
+      <mat-icon *ngIf="ratingValue == 3" svgIcon="rating_face_3"></mat-icon>
+      <mat-icon *ngIf="ratingValue == 4" svgIcon="rating_face_4"></mat-icon>
+      <mat-icon *ngIf="ratingValue == 5" svgIcon="rating_face_5"></mat-icon>
+    </div>
+    <div class='rating-description'>
+      <p>{{ratingDescription}}</p>
+    </div>
+    <div class='journal-entry-div'>
+      <mat-form-field>
+        <textarea matInput placeholder="Journal Entry" [(ngModel)]="rating.journalEntry" cdkTextareaAutosize cdkAutosizeMaxRows="15"></textarea>
+      </mat-form-field>
+    </div>
+  </mat-card-content>
+</mat-card>

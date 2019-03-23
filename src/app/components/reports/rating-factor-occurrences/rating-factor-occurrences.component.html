@@ -1,0 +1,32 @@
+<span class='top-span'>
+  <!-- <p>Rating Factor Occurrences</p> -->
+  <span class='rating-button-container'>
+    <button mat-button *ngFor="let rating of ratingOptions" [class.active-rating]="rating == activeChartRating" (click)="selectRating(rating)">{{rating}}</button>
+  </span>
+</span>
+<div class='chart-container' *ngIf="chartData.length > 0 && showCharts">
+  <div class='chart-div'>
+    <mat-card>
+      <mat-card-header>
+        <h3>Positive</h3>
+        <mat-checkbox [(ngModel)]="showPositiveLegend">Show Legend</mat-checkbox>
+      </mat-card-header>
+      <mat-card-content>
+        <canvas baseChart [legend]="showPositiveLegend" [data]="getFactorDataForRating(activeChartRating, factorTypes.Positive)"
+          [labels]="getFactorLabelsForRating(activeChartRating, factorTypes.Positive)" chartType="doughnut"></canvas>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <div class='chart-div'>
+    <mat-card>
+      <mat-card-header>
+        <h3>Negative</h3>
+        <mat-checkbox [(ngModel)]="showNegativeLegend">Show Legend</mat-checkbox>
+      </mat-card-header>
+      <mat-card-content>
+        <canvas baseChart [legend]="showNegativeLegend" [data]="getFactorDataForRating(activeChartRating, factorTypes.Negative)"
+          [labels]="getFactorLabelsForRating(activeChartRating, factorTypes.Negative)" chartType="doughnut"></canvas>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

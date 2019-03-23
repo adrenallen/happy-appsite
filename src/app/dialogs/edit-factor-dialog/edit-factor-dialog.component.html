@@ -1,0 +1,12 @@
+<h4 mat-dialog-title>{{editFactor.id > 0 ? 'Edit' : 'New'}} Factor</h4>
+<h5 mat-dialog-subtitle *ngIf="editFactor.id > 0">This will rename historical uses!</h5>
+<div mat-dialog-content>
+  <mat-form-field hintLabel="Must be unique">
+    <textarea [(ngModel)]="editFactor.factor" matInput cdkTextareaAutosize cdkAutosizeMaxRows="3"></textarea>
+    <mat-hint align="end">{{editFactor.factor.length}} / {{maxFactorLength}}</mat-hint>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button color="primary" (click)="checkAndCreateFactor()">Save</button>
+  <button mat-raised-button mat-dialog-close color="warn">Cancel</button>
+</div>

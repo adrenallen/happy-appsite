@@ -1,0 +1,14 @@
+<h4 mat-dialog-title>{{title}}</h4>
+<div mat-dialog-content>
+  <span>{{message}}</span>
+  <br><br>
+  <mat-form-field appearance="standard">
+    <mat-label>{{label}}</mat-label>
+    <textarea [formControl]="inputControl" matInput cdkTextareaAutosize [cdkAutosizeMaxRows]="(showTextArea) ? 3 : 1"></textarea>
+    <mat-error *ngIf="inputControl.invalid">{{getInputErrors()}}</mat-error>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions >
+  <button mat-raised-button (click)="submit()" color="primary" [disabled]="inputControl.invalid">Submit</button>
+  <button mat-raised-button mat-dialog-close color="warn">Cancel</button>
+</div>

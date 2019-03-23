@@ -1,0 +1,42 @@
+<mat-horizontal-stepper *ngIf="!showLoadingCard">
+  <mat-step label="Rating">
+    <div>
+      <!-- rating form component -->
+      <hpy-rating-form [(rating)]="rating"></hpy-rating-form>
+      <br>
+      <button class='float-left stepper-button' mat-raised-button color="warn" (click)="backToDashboard()">Cancel</button>
+      <button class='stepper-button' mat-stroked-button color="warn" (click)="confirmDeleteRating()">Delete Rating</button>
+      <button class='float-right stepper-button' mat-raised-button color="primary" matStepperNext>Next</button>
+    </div>
+  </mat-step>
+  <mat-step label="Positive Factors">
+    <div>
+      <!-- Positive factors component -->
+      <hpy-rating-factors-form *ngIf="positiveRatingFactors != null" 
+        [factorType]="factorTypes.Positive" 
+        [(factorAspects)]="factorAspects"
+        [(factors)]="factors"
+        [(ratingFactors)]="positiveRatingFactors"></hpy-rating-factors-form>
+      <br>
+      <button class='float-left stepper-button' mat-raised-button color="accent" matStepperPrevious>Back</button>
+      <button class='stepper-button' mat-stroked-button color="primary" (click)="openNewFactorDialog(true)">Create a
+        factor</button>
+      <button class='float-right stepper-button' mat-raised-button color="primary" matStepperNext>Next</button>
+    </div>
+  </mat-step>
+  <mat-step label="Negative Factors">
+    <!-- negative factors component -->
+    <hpy-rating-factors-form *ngIf="negativeRatingFactors != null"
+      [factorType]="factorTypes.Negative"
+      [(factorAspects)]="factorAspects"
+      [(factors)]="factors"
+      [(ratingFactors)]="negativeRatingFactors"></hpy-rating-factors-form>
+    <br>
+    <button class='float-left stepper-button' mat-raised-button color="accent" matStepperPrevious>Back</button>
+    <button class='stepper-button' mat-stroked-button color="primary" (click)="openNewFactorDialog(false)">Create a
+      factor</button>
+    <button class='float-right stepper-button' mat-raised-button color="primary" (click)="updateRating()"
+      angulartics2On="click" angularticsAction="EditRatingSubmit" angularticsLabel="edit-rating">Submit</button>
+  </mat-step>
+</mat-horizontal-stepper>
+<hpy-loading-card [show]="showLoadingCard"></hpy-loading-card>

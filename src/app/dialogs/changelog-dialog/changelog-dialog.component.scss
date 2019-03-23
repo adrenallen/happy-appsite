@@ -1,0 +1,11 @@
+@import "src/styles-variables.scss";
+div, h4, button{
+    text-align:center;
+}
+
+div button{
+    margin:auto;
+}
+.changelog-content{
+    max-height:60vh;
+}

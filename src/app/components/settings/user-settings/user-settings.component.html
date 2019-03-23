@@ -1,0 +1,26 @@
+<div class='mat-typography'>
+  <div class='user-info-div'>
+    <mat-form-field>
+      <mat-label>Username</mat-label>
+      <input matInput disabled [value]="username" >
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+      <mat-label>Email</mat-label>
+      <input matInput disabled [value]="email" >
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+      <mat-label>Mobile Number</mat-label>
+      <input matInput [disabled]="isMobileDisabled()" type="tel" [(ngModel)]="phone" pattern="[0-9]{,11}" maxlength="11">
+      <mat-icon *ngIf="isMobileDisabled()" matSuffix (click)="editPhoneNumber()">edit</mat-icon>
+      <mat-icon *ngIf="!isMobileDisabled()" matSuffix (click)="savePhoneNumber()">check_icon</mat-icon>
+    </mat-form-field>
+    <br>
+    <button mat-raised-button color="accent" (click)="resetPassword()">Reset Password</button>
+  </div>
+  <div class='user-action-div'>
+    <button mat-raised-button (click)="exportData()" color="primary">Export Data</button>
+    <button disabled mat-raised-button color="warn">Delete Data</button>
+  </div>
+</div>

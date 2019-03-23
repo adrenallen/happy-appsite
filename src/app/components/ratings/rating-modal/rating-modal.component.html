@@ -1,0 +1,44 @@
+<mat-horizontal-stepper>
+  <mat-step label="Rating">
+    <div>
+      <!-- rating form component -->
+      <hpy-rating-form
+      [(rating)]="rating"
+      [disableRatingDate]="false"></hpy-rating-form>
+      <br>
+      <button class='float-left stepper-button' mat-raised-button color="warn" (click)="backToDashboard()">Cancel</button>
+      <button class='float-right stepper-button' mat-raised-button color="primary" matStepperNext>Next</button>
+    </div>
+  </mat-step>
+  <mat-step label="Positive Factors">
+    <div>
+      <!-- Positive factors component -->
+      <hpy-rating-factors-form
+      [factorType]="factorTypes.Positive"
+      [(factors)]="factors"
+      [(factorAspects)]="factorAspects"
+      [(ratingFactors)]="positiveRatingFactors"></hpy-rating-factors-form>
+      <br>
+      <button class='float-left stepper-button' mat-raised-button color="accent" matStepperPrevious>Back</button>
+      <button class='stepper-button' mat-stroked-button color="primary" (click)="openNewFactorDialog(true)">Create a factor</button>
+      <button class='float-right stepper-button' mat-raised-button color="primary" matStepperNext>Next</button>
+    </div>
+  </mat-step>
+  <mat-step label="Negative Factors">
+      <!-- negative factors component -->
+      <hpy-rating-factors-form
+      [factorType]="factorTypes.Negative"
+      [(factors)]="factors"
+      [(factorAspects)]="factorAspects"
+      [(ratingFactors)]="negativeRatingFactors"></hpy-rating-factors-form>
+      <br>
+      <button class='float-left stepper-button' mat-raised-button color="accent" matStepperPrevious>Back</button>
+      <button class='stepper-button' mat-stroked-button color="primary" (click)="openNewFactorDialog(false)" >Create a factor</button>
+      <button class='float-right stepper-button' mat-raised-button color="primary" (click)="submitRating()"
+      
+        angulartics2On="click" 
+        angularticsAction="NewRatingSubmit" 
+        angularticsLabel="new-rating">Submit</button>
+  </mat-step>
+</mat-horizontal-stepper>
+<hpy-loading-card [show]="showLoadingCard"></hpy-loading-card>

@@ -1,0 +1,43 @@
+<div>
+  <nav mat-tab-nav-bar>
+    <a mat-tab-link
+      routerLink="./user"
+      routerLinkActive #rlaUser="routerLinkActive"
+      [active]="rlaUser.isActive">
+      <mat-icon svgIcon="profile_icon"></mat-icon>
+      <label>User</label>
+    </a>
+    <a mat-tab-link
+      routerLink="./factors"
+      routerLinkActive #rlaFactors="routerLinkActive"
+      [active]="rlaFactors.isActive">
+      <mat-icon svgIcon="factors_icon"></mat-icon>
+      <label>Factors</label>
+    </a>
+    <a mat-tab-link
+      routerLink="./factoraspects"
+      routerLinkActive #rlaFactorAspects="routerLinkActive"
+      [active]="rlaFactorAspects.isActive"
+      [ngClass]="{'hide-link': !rlaFactorAspects.isActive}">
+      <mat-icon svgIcon="factor_aspect_icon"></mat-icon>
+      <label>Factor Aspects</label>
+    </a>
+    <a mat-tab-link
+      routerLink="./notifications"
+      routerLinkActive #rlaReminders="routerLinkActive"
+      [active]="rlaReminders.isActive">
+      <mat-icon svgIcon="notification_icon"></mat-icon>
+      <label>Notifications</label>
+    </a>
+    <!-- <a mat-tab-link
+      routerLink="./assistant"
+      routerLinkActive #rlaAssistant="routerLinkActive"
+      [active]="rlaAssistant.isActive">
+      <mat-icon svgIcon="assistant_icon"></mat-icon>
+      <label>Assistant</label>
+    </a> -->
+  </nav>
+  <div>
+    <router-outlet></router-outlet>
+  </div>  
+</div>

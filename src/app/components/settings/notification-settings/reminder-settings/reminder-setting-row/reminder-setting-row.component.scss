@@ -1,0 +1,54 @@
+@import "src/styles-variables.scss";
+
+.mat-button-toggle-checked{
+    background:$primary-color;
+    color:white;
+}
+
+.time-div{
+    margin-bottom:20px;    
+}
+
+.row{
+    // border-bottom:2px solid lighten($primary-color, 20%);
+    max-width:500px;
+    margin-top:20px;
+    margin-left:15px;
+    margin-right:15px;
+    border-bottom:2px solid #EFEFEF;
+    padding-bottom:15px;
+    position:relative;
+
+    .delete-button{
+        position:absolute;
+        color:$light-grey-font-color;
+    }
+
+    div{
+        margin-top:5px;
+        display:flex;
+        span.label-span{
+            flex:1 1 auto;
+            text-align:left;
+            vertical-align: middle;
+            label{
+                vertical-align: middle;
+                opacity:0.8;
+                color:$light-grey-font-color;
+                margin-left:35px;
+            }
+        }
+        span.option-span{
+            flex: 4 1 auto;
+            text-align:right;
+            div{
+                display:flex;
+                justify-content: flex-end;
+                mat-chip{
+                    margin-left:3px;
+                    margin-right:3px; 
+                }
+            }
+        }
+    }
+}

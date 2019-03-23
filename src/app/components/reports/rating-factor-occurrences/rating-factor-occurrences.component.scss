@@ -1,0 +1,45 @@
+@import "src/styles-variables.scss";
+.active-rating{
+    color:white;
+    background: mat-color($primary);
+}
+
+.rating-button-container{
+    display:flex;
+    width:100%;
+    max-width:600px;
+    margin-left:auto;
+    margin-right:auto;
+    button{
+        flex:1 1 auto;
+    }
+}
+
+.top-span{
+    text-align: center;
+    max-width:600px;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+mat-card-header mat-checkbox{
+    position:absolute;
+    right:10%;
+}
+
+.chart-container{
+    width:100%;
+    display:flex;
+    flex-wrap:wrap;
+    
+    .chart-div{
+        flex: 1 1 auto;
+        flex-wrap:wrap;
+        width:100%;
+    }
+}
+@media screen and (min-width:600px){
+    .chart-div{
+        max-width:50%;
+    }
+}

@@ -1,0 +1,17 @@
+<h3 mat-dialog-title class='mat-title'>Specify an aspect</h3>
+<div mat-dialog-content class='content-div'>
+  <mat-list>
+    <mat-list-item *ngIf="showNoneOption" (click)="selectNoneAspect()">
+      <p>None</p>
+      <mat-divider [inset]="true"></mat-divider>
+    </mat-list-item>
+    <mat-list-item *ngFor="let aspect of aspects; last as last" (click)="selectAspect(aspect)">
+      <p [innerHTML]="aspect.factorAspect"></p>
+      <mat-divider [inset]="true" *ngIf="!last"></mat-divider>
+    </mat-list-item>
+  </mat-list>
+</div>
+<div class='bottom-buttons' mat-dialog-actions>
+  <button mat-raised-button color="primary" (click)="addFactorAspectDialog();">Create an aspect</button>
+  <button mat-raised-button mat-dialog-close color="warn">Cancel</button>
+</div>

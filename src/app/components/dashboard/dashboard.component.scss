@@ -1,0 +1,39 @@
+section.action-button-div{
+    margin-top:10px;
+    text-align:center;
+    button{
+        margin-left:auto;
+        margin-right:auto;
+    }
+}
+
+section h1{
+    text-align: center;
+}
+
+hpy-basic-list{
+    max-width:1000px;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+.header-nav-middle-fill{
+    flex:1 1 auto;
+    text-align:center;
+}
+
+div{
+    margin-top:10px;
+    max-width:1000px;
+    margin-left:auto;
+    margin-right:auto;
+    background:white;
+}
+
+.sticky-button{
+    width:100%;
+    left:0;
+    position:absolute;
+    bottom:2%;
+    text-align:center;
+}

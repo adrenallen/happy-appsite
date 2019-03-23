@@ -1,0 +1,44 @@
+<mat-accordion>
+  <div class='date-range-div'>
+    <hpy-date-time-picker [(dateValue)]="filterStartDate" (onDateChange)="updateDataWithNewDates()"></hpy-date-time-picker>
+    <label><mat-icon svgIcon="arrow_forward"></mat-icon></label>
+    <hpy-date-time-picker [(dateValue)]="filterEndDate" (onDateChange)="updateDataWithNewDates()"></hpy-date-time-picker>
+  </div>
+  <mat-expansion-panel *ngFor="let ratingsWithRatingFactor of ratingsWithRatingFactors">
+    <mat-expansion-panel-header>
+      <mat-panel-title class='mat-typography'>
+          <mat-icon [svgIcon]="getIconNameForRating(ratingsWithRatingFactor.rating.rating)"></mat-icon><span>{{ratingsWithRatingFactor.rating.rating}}</span>
+      </mat-panel-title>
+      <mat-panel-description>
+        <span>{{ratingsWithRatingFactor.rating.createdDatetime | date:"short"}}</span>
+        <button mat-icon-button (click)="editRating(ratingsWithRatingFactor)"
+          angulartics2On="click" 
+          angularticsAction="EditRatingNavigate" 
+          angularticsLabel="edit-rating"><mat-icon svgIcon="edit"></mat-icon></button>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <mat-list>
+      <h2 mat-subheader *ngIf="ratingsWithRatingFactor.rating.journalEntry != null && ratingsWithRatingFactor.rating.journalEntry.length > 0">Journal Entry</h2>
+      <mat-list-item *ngIf="ratingsWithRatingFactor.rating.journalEntry != null && ratingsWithRatingFactor.rating.journalEntry.length > 0">
+        <span [innerHTML]="ratingsWithRatingFactor.rating.journalEntry"></span>
+      </mat-list-item>
+      <h2 mat-subheader *ngIf="(ratingsWithRatingFactor.ratingFactors | ratingFactorsFilterByType:1).length > 0">Positive Factors</h2>
+      <mat-list-item *ngFor="let ratingFactor of ratingsWithRatingFactor.ratingFactors | ratingFactorsFilterByType:1">
+        <span [innerHTML]="getRatingFactorRowText(ratingFactor)"></span>
+      </mat-list-item>
+      <mat-divider [inset]="true" *ngIf="(ratingsWithRatingFactor.ratingFactors | ratingFactorsFilterByType:2).length > 0 && (ratingsWithRatingFactor.ratingFactors | ratingFactorsFilterByType:1).length > 0"></mat-divider>
+      <h2 mat-subheader
+        *ngIf="(ratingsWithRatingFactor.ratingFactors | ratingFactorsFilterByType:2).length > 0">Negative Factors</h2>
+      <mat-list-item 
+        *ngFor="let ratingFactor of ratingsWithRatingFactor.ratingFactors | ratingFactorsFilterByType:2">
+        <span [innerHTML]="getRatingFactorRowText(ratingFactor)"></span>
+      </mat-list-item>
+    </mat-list>
+  </mat-expansion-panel>
+</mat-accordion>
+<div *ngIf="dataLoaded && (!ratingsWithRatingFactors || ratingsWithRatingFactors.length < 1)">
+  <h2>No ratings to display!<br><br>Add ratings to see some data!</h2>
+</div>
+<div *ngIf="!dataLoaded" class='loading-div'>
+  <mat-spinner></mat-spinner>
+</div>

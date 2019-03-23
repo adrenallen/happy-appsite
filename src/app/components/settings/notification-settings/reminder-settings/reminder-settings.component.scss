@@ -1,0 +1,36 @@
+@import "src/styles-variables.scss";
+hpy-reminder-setting-row{
+    margin-top:8px;
+}
+
+div.action-button{
+    width:100%;
+    text-align:center;
+    margin-top:10px;
+    margin-bottom:10px;
+    display:flex;
+    div{
+        flex: 1 1 auto;
+    }
+}
+
+.notifications-list{
+    max-height:55vh;
+    overflow:auto;
+}
+
+.final-buttons{
+    text-align:center;
+    margin-top:20px;
+    margin-bottom:15px;
+}
+.reminder-div{
+    margin-top:15px;
+    text-align: center;
+    color:$light-grey-font-color;
+}
+
+.parent{
+    max-width:500px;
+    margin:auto;
+}

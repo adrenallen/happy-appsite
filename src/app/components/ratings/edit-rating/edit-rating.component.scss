@@ -1,0 +1,46 @@
+mat-horizontal-stepper{
+    text-align:center;
+    margin-left:auto;
+    margin-right:auto;
+}
+div{
+    &.close-button-container{
+        position:relative;
+        min-height:5px;
+        button{
+            position:absolute;
+            top:-10px;
+            right:-10px;
+            z-index:20;
+        }
+    }
+}
+
+@media screen and (max-width:430px){
+    .stepper-button{
+        display:block;
+        margin-left:auto;
+        margin-right:auto;
+        margin-top:20px;
+    }
+}
+
+@media screen and (min-width:430px){
+    .float-left{
+        float:left;
+    }
+    
+    .float-right{
+        float:right;
+    }    
+
+    @media (min-width: 1200px){
+        .float-left{
+            margin-left:20%;
+        }
+    
+        .float-right{
+            margin-right:20%;
+        }
+    }
+}

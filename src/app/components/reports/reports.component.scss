@@ -1,0 +1,16 @@
+@import "src/styles-variables.scss";
+button.active{
+    color:white;
+    background: mat-color($primary);
+}
+
+mat-expansion-panel{
+    max-width:600px;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+.helper-button{
+    text-align:center;
+    color:mat-color($primary);
+}

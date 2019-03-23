@@ -1,0 +1,41 @@
+.main-container{
+    width:400px;
+    @media screen and (max-width:450px){
+        width:90%;
+    }
+    
+    margin-left: auto;
+    margin-right:auto;
+
+    .signup-fields-container{
+        text-align:center;
+    }
+    mat-form-field{
+        width:50%;
+        margin-left:auto;
+        margin-right:auto;
+        input{
+            margin-left:auto;
+            margin-right:auto;
+        }
+    }
+
+    .signup-buttons-container{
+        width:100%;
+        text-align:center;
+        a, button{
+            margin-left:auto;
+            margin-right:auto;
+            margin-top:5%;
+        }       
+        a{
+            font-size:90%;
+            opacity:0.8;
+            text-decoration-line: underline;
+        }
+    }
+    
+    .header-div{
+        text-align:center;
+    }
+}

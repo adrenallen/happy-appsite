@@ -1,0 +1,54 @@
+<div class='row'>
+  <span class='delete-button' color="warn" (click)="delete()">
+    <mat-icon svgIcon="delete_icon"></mat-icon>
+  </span>
+  <div class='time-div'>
+    <span class='label-span'>
+      <label>Time</label>
+    </span>
+    <span class='option-span'>
+      <mat-select placeholder="{{timeOptions[0].label}}" [(ngModel)]="setting.reminderTime">
+        <mat-option *ngFor="let op of timeOptions" [value]="op.value">
+          {{op.label}}
+        </mat-option>
+      </mat-select>
+    </span>
+  </div>
+  <div class='day-div'>
+    <span class='label-span'>
+      <label>Days</label>
+    </span>
+    <span class='option-span'>
+      <div>
+        <mat-chip [selected]="setting.sunday === true" (click)="setting.sunday=!setting.sunday">Su</mat-chip>
+        <mat-chip [selected]="setting.monday === true" (click)="setting.monday=!setting.monday">M</mat-chip>
+        <mat-chip [selected]="setting.tuesday === true" (click)="setting.tuesday=!setting.tuesday">T</mat-chip>
+        <mat-chip [selected]="setting.wednesday === true" (click)="setting.wednesday=!setting.wednesday">W</mat-chip>
+        <mat-chip [selected]="setting.thursday === true" (click)="setting.thursday=!setting.thursday">Th</mat-chip>
+        <mat-chip [selected]="setting.friday === true" (click)="setting.friday=!setting.friday">F</mat-chip>
+        <mat-chip [selected]="setting.saturday === true" (click)="setting.saturday=!setting.saturday">Sa</mat-chip>
+      </div>
+    </span>
+  </div>
+  <div class='notif-div'>
+    <span class='label-span'>
+      <label>Method</label>
+    </span>
+    <span class='option-span'>
+      <div>
+        <mat-chip [selected]="setting.push === true" (click)="setting.push=!setting.push" title="App Push">
+          <mat-icon svgIcon="notification_icon"></mat-icon>
+        </mat-chip>
+        <mat-chip [selected]="setting.email === true" (click)="setting.email=!setting.email" title="Email">
+          <mat-icon svgIcon="email_icon"></mat-icon>
+        </mat-chip>
+        <mat-chip [selected]="setting.sms === true" (click)="setting.sms=!setting.sms" title="Text">
+          <mat-icon svgIcon="sms_icon"></mat-icon>
+        </mat-chip>
+      </div>
+    </span>
+  </div>
+</div>
+
+<!-- This is here because without it the chips don't display right -->
+<mat-chip-list></mat-chip-list>

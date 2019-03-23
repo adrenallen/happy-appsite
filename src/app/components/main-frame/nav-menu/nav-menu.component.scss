@@ -1,0 +1,12 @@
+@import "src/styles-variables.scss";
+a.active{
+    color:white;
+    background:mat-color($primary) !important;
+}
+a.coming-soon{
+    opacity:0.7;
+}
+
+mat-icon{
+    margin-right:3%;
+}

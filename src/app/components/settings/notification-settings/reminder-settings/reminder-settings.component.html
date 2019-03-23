@@ -1,0 +1,23 @@
+<div class='mat-typography parent'>
+    <div class='reminder-div'>
+        <h4>When do you want to receive rating reminders?</h4>
+    </div>
+    <div class='action-button'>
+        <div>
+            <button mat-stroked-button color="primary" (click)="addNewReminder()" [disabled]="!reminderSettings || reminderSettings.length >= 4">New</button>
+        </div>
+        <div>
+            <button mat-raised-button color="primary" (click)="save()">Save</button>
+        </div>
+        <div>
+            <button mat-stroked-button color="warn" (click)="resetSettings()">Undo</button>
+        </div>
+    </div>
+    <div class='notifications-list'>
+        <hpy-reminder-setting-row *ngFor="let reminderSetting of reminderSettings" [setting]="reminderSetting"
+            (deleted)="deleteListener($event)"></hpy-reminder-setting-row>
+    </div>
+    <div class='final-buttons'>
+        <button mat-raised-button color="primary" (click)="save()">Save</button>
+    </div>
+</div>

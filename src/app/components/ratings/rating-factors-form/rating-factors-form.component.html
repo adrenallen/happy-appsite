@@ -1,0 +1,28 @@
+<mat-card>
+  <mat-card-title>{{getFactorNameFromType(factorType)}} Factors</mat-card-title>
+  <mat-card-subtitle>Highest Impact First</mat-card-subtitle>
+  <mat-card-content>
+    <div class='ratingFactorItemContainer' cdkDropList (cdkDropListDropped)="itemMoveDrop($event)" cdkDropListLockAxis='y'>
+      <div class='ratingFactorItem hover-opacity' cdkDrag *ngFor="let ratingFactor of ratingFactors">
+        <mat-icon class='drag-icon' svgIcon='drag_icon'></mat-icon>
+        <span class='factor-item-middle'>
+          <span class='factor-label' [innerHTML]="getRatingFactorRowText(ratingFactor)">
+          </span>
+        </span>
+        <span class='rating-factor-item-row-buttons'>
+            <mat-icon class='hover-opacity' svgIcon="factor_aspect_icon" (click)="openFactorAspectSelectForRating(ratingFactor, ratingFactor.factorAspect)"></mat-icon>
+            <mat-icon class='delete-button hover-opacity' (click)="removeRatingFactor(ratingFactor)" svgIcon="delete_icon"></mat-icon>
+        </span>        
+      </div>
+    </div>
+    <mat-select *ngIf="(factorsNotInRating() | factorArchived:false).length > 0" class='factorSelectList' placeholder="Select a {{getFactorNameFromType(factorType)}} factor in your day"
+      [(value)]="selectedFactor" (selectionChange)="addSelectedFactor()">
+      <mat-option *ngFor="let factor of (factorsNotInRating() | factorArchived:false)" [value]="factor.id">
+        <span [innerHTML]="factor.factor"></span>
+      </mat-option>
+    </mat-select>
+    <div *ngIf="(factorsNotInRating() | factorArchived:false).length < 1 && ratingFactors.length < 1">
+      <h3>You need to create some factors!</h3>
+    </div>
+  </mat-card-content>
+</mat-card>

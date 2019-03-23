@@ -1,0 +1,4 @@
+<span class='mat-typography'>
+  <input [(ngModel)]="dateValue" [owlDateTimeTrigger]="datePicker" [owlDateTime]="datePicker" (dateTimeChange)="dateChanged()">
+  <owl-date-time [pickerMode]="'dialog'" [hour12Timer]="true" #datePicker></owl-date-time>
+</span>

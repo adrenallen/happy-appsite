@@ -1,0 +1,13 @@
+<div class='report-select-div'>
+  <mat-form-field>
+    <mat-select placeholder="Report Results" [(value)]="selectedResultID" (selectionChange)="updateResultSet()">
+      <mat-option *ngFor="let result of resultOptions" [value]="result.id">
+        {{result.completedDatetime | date:'short'}}
+      </mat-option>
+      <mat-option *ngIf="canRequest" value="-1">Request New</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+<div *ngIf="showChart && selectedResultID > 0" class='chart-container'>
+  <canvas baseChart [datasets]="datasets" [legend]="false" [labels]="labels" chartType="horizontalBar"></canvas>
+</div>

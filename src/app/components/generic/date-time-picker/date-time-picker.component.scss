@@ -1,0 +1,11 @@
+@import "src/styles-variables.scss";
+input{
+    text-align: center;
+    border:3px solid mat-color($primary, A200);
+    border-radius: 5px;
+    color:mat-color($primary, A200);
+    font-weight:bold;
+    padding-top:2%;
+    padding-bottom:2%;
+    cursor:pointer;
+}

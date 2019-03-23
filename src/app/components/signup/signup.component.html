@@ -1,0 +1,40 @@
+<mat-card class="main-container mat-typography">
+  <div class='header-div'>
+    <h2>Signup</h2>
+  </div>
+  <div class="signup-fields-container">
+    <mat-form-field appearance="standard">
+      <mat-label>Username</mat-label>
+      <input matInput #usernameInput placeholder="Your Username" [formControl]="username" required [maxlength]="usernameLengths[1]">
+      <mat-hint align="end">{{usernameInput.value.length}} / {{usernameLengths[1]}}</mat-hint>
+      <mat-error align="start" *ngIf="username.invalid">{{getUsernameErrorMessage()}}</mat-error>
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="standard">
+      <mat-label>Email</mat-label>
+      <input matInput [formControl]="email" placeholder="Your password" required>
+      <mat-error *ngIf="email.invalid">{{getEmailErrorMessage()}}</mat-error>
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="standard">
+      <mat-label>Password</mat-label>
+      <input matInput #passwordInput type='password' placeholder="Your password" [formControl]="password" [maxlength]="passwordLengths[1]" required
+        (change)="checkIfPasswordsMatch()">
+      <mat-hint *ngIf="passwordInput.value.length < 6">Atleast 6 characters</mat-hint>
+      <mat-hint align="end">{{passwordInput.value.length}} / {{passwordLengths[1]}}</mat-hint>
+      <mat-error *ngIf="password.invalid">{{getPasswordErrorMessage()}}</mat-error>
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="standard">
+      <mat-label>Confirm Password</mat-label>
+      <input matInput #passwordConfirmInput type='password' placeholder="Type your password again" [formControl]="confirmPassword" [maxlength]="passwordLengths[1]"
+        (change)="checkIfPasswordsMatch()">
+      <mat-error *ngIf="!passwordsMatch">Passwords do not match</mat-error>
+    </mat-form-field>
+  </div>  
+  <div class="signup-buttons-container">
+    <button mat-raised-button color="primary" (click)="signUp()" [disabled]="!passwordsMatch || confirmPassword.value.length < 1 || password.invalid || email.invalid || username.invalid">Sign up</button>
+    <br>
+    <a mat-button (click)="directToLogin()">Back to login</a>
+  </div>
+</mat-card>

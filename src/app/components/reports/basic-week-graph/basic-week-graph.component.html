@@ -1,0 +1,13 @@
+<div class='date-range-div'>
+    <hpy-date-time-picker [(dateValue)]="filterStartDate" (onDateChange)="updateDataWithNewDates()">
+    </hpy-date-time-picker>
+    <label>
+        <mat-icon svgIcon="arrow_forward"></mat-icon>
+    </label>
+    <hpy-date-time-picker [(dateValue)]="filterEndDate" (onDateChange)="updateDataWithNewDates()">
+    </hpy-date-time-picker>
+</div>
+<section class='graph-section' *ngIf="lineChartLabels.length > 0">
+    <canvas baseChart width="400" height="400" [datasets]="lineChartData" [labels]="lineChartLabels"
+        [legend]="lineChartLegend" [chartType]="lineChartType"></canvas>
+</section>
